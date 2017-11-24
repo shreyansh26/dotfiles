@@ -8,5 +8,6 @@ Structure
     - i3blocks
         - scripts
 - .vim_runtime
+- .fonts
 - .vimrc
 - .zshrc
