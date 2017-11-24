@@ -1,4 +1,4 @@
-# Dotfils Configuration
+# Dotfiles Configuration
 
 Structure  
 - .config
