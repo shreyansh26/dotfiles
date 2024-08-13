@@ -14,3 +14,4 @@ Structure
 - .wezterm.lua
 - .vimrc
 - .zshrc
+- .p10k.zsh
