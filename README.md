@@ -2,6 +2,8 @@
 
 Structure  
 - .config
+    - nvim
+        - init.vim
     - i3
         - config
         - i3blocks.conf
@@ -9,5 +11,6 @@ Structure
         - scripts
 - .vim_runtime
 - .fonts
+- .wezterm.lua
 - .vimrc
 - .zshrc
