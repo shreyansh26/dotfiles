@@ -15,6 +15,15 @@ trust_level = "untrusted"
 [projects."/mnt/ssd1/shreyansh/home_dir/scan-cuda"]
 trust_level = "trusted"
 
+[projects."/Users/shreyansh/Projects"]
+trust_level = "trusted"
+
+[projects."/Users/shreyansh/Projects/track-project"]
+trust_level = "trusted"
+
+[projects."/Users/shreyansh/Projects/track-repos"]
+trust_level = "trusted"
+
 [features]
 ghost_commit = false
 unified_exec = true
@@ -22,6 +31,8 @@ shell_snapshot = true
 apply_patch_freeform = true
 web_search_request = true
 skills = true
+steer = true
+collab = true
 
 [sandbox_workspace_write]
 network_access = true
