@@ -34,6 +34,7 @@ skills = true
 steer = true
 collab = true
 collaboration_modes = true
+web_search = "live"
 
 [sandbox_workspace_write]
 network_access = true
