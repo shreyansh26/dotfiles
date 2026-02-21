@@ -32,8 +32,14 @@ shell_snapshot = true
 apply_patch_freeform = true
 skills = true
 steer = true
-collab = true
+multi_agent = true
 collaboration_modes = true
 
 [sandbox_workspace_write]
 network_access = true
+
+[mcp_servers.excalidraw]
+url = "https://mcp.excalidraw.com/mcp"
+
+[mcp_servers.remnote]
+url = "http://127.0.0.1:3001/mcp"
