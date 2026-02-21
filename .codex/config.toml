@@ -43,3 +43,11 @@ url = "https://mcp.excalidraw.com/mcp"
 
 [mcp_servers.remnote]
 url = "http://127.0.0.1:3001/mcp"
+
+[mcp_servers.asana]
+command = "bash"
+args = [
+"-lc",
+'npx -y mcp-remote@latest https://mcp.asana.com/v2/mcp 3334 --static-oauth-client-info "{\"client_id\":\"${ASANA_CLIENT_ID}\", \"client_secret\":\"${ASANA_CLIENT_SECRET}\"}" --resource https://mcp.asana.com/v2'
+]
+env_vars = ["ASANA_CLIENT_ID", "ASANA_CLIENT_SECRET"]
