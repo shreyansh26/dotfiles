@@ -1,11 +1,12 @@
 model = "gpt-5.3-codex"
-model_reasoning_effort = "high"
+model_reasoning_effort = "xhigh"
 tool_output_token_limit = 25000
 # Leave room for native compaction near the 272–273k context window.
 # Formula: 273000 - (tool_output_token_limit + 15000)
 # With tool_output_token_limit=25000 ⇒ 273000 - (25000 + 15000) = 233000
 model_auto_compact_token_limit = 233000
 web_search = "live"
+personality = "pragmatic"
 
 [projects."/mnt/ssd1/shreyansh"]
 trust_level = "trusted"
@@ -25,6 +26,9 @@ trust_level = "trusted"
 [projects."/Users/shreyansh/Projects/track-repos"]
 trust_level = "trusted"
 
+[projects."/Users/shreyansh/Projects/excalidraw"]
+trust_level = "trusted"
+
 [features]
 ghost_commit = false
 unified_exec = true
@@ -34,6 +38,8 @@ skills = true
 steer = true
 multi_agent = true
 collaboration_modes = true
+voice_transcription = true  
+prevent_idle_sleep = true
 
 [sandbox_workspace_write]
 network_access = true
