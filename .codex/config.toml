@@ -1,10 +1,12 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "xhigh"
-tool_output_token_limit = 25000
+tool_output_token_limit = 50000
 # Leave room for native compaction near the 272–273k context window.
 # Formula: 273000 - (tool_output_token_limit + 15000)
 # With tool_output_token_limit=25000 ⇒ 273000 - (25000 + 15000) = 233000
-model_auto_compact_token_limit = 233000
+model_context_window = 546000
+# (546000 - (50000 + 30000)) = 466000
+model_auto_compact_token_limit = 466000
 web_search = "live"
 personality = "pragmatic"
 
@@ -38,7 +40,7 @@ skills = true
 steer = true
 multi_agent = true
 collaboration_modes = true
-voice_transcription = true  
+voice_transcription = true
 prevent_idle_sleep = true
 
 [sandbox_workspace_write]
@@ -57,3 +59,9 @@ args = [
 'npx -y mcp-remote@latest https://mcp.asana.com/v2/mcp 3334 --static-oauth-client-info "{\"client_id\":\"${ASANA_CLIENT_ID}\", \"client_secret\":\"${ASANA_CLIENT_SECRET}\"}" --resource https://mcp.asana.com/v2'
 ]
 env_vars = ["ASANA_CLIENT_ID", "ASANA_CLIENT_SECRET"]
+
+[notice.model_migrations]
+"gpt-5.1-codex-max" = "gpt-5.3-codex"
+
+[tui]
+status_line = ["model-with-reasoning", "context-remaining", "current-dir", "git-branch", "context-window-size", "used-tokens"]
