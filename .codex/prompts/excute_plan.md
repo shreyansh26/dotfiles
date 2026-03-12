@@ -1,0 +1,1 @@
+Implement the plan using $parallel-task and ensure the tasks get updated after each task is complete, and write tests where applicable to help the agents ensure their success when completing a task, if relevant. Always try to create intelligent acceptance criteria to ensure the highest quality results.
