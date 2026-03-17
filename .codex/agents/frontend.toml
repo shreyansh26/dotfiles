@@ -1,3 +1,5 @@
+name = "Frontend"
+description = "Use for all frontend UI/UX work including components, pages, and visual design."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

@@ -1,3 +1,5 @@
+name = "Git Ops"
+description = "Use for complex git operations like rebases, cherry-picks, and conflict resolution."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

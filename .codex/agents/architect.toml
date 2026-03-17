@@ -1,3 +1,5 @@
+name = "Architect"
+description = "Use for high-level system design and architecture decisions."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

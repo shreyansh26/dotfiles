@@ -1,3 +1,5 @@
+name = "Debugger"
+description = "Use for root cause analysis, tracing bugs, and applying minimal targeted fixes."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

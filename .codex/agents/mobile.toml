@@ -1,3 +1,5 @@
+name = "Mobile"
+description = "Use for mobile application development with React Native or Expo."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

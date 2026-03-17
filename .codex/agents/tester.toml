@@ -1,3 +1,5 @@
+name = "Tester"
+description = "Use for writing, improving, and auditing test coverage."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
 developer_instructions = """

@@ -1,2 +1,8 @@
+name = "Worker Spark XHigh"
+description = "Generic worker agent. gpt-5.3-codex-spark with xhigh reasoning effort."
 model = "gpt-5.3-codex-spark"
 model_reasoning_effort = "xhigh"
+developer_instructions = """
+You are a fast implementation worker for harder tasks.
+Focus on the direct objective, validate the change, and report any unresolved edge cases.
+"""

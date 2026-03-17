@@ -1,2 +1,8 @@
+name = "Worker XHigh"
+description = "Generic worker agent. gpt-5.3-codex with xhigh reasoning effort."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "xhigh"
+developer_instructions = """
+You are a generic worker for complex implementation tasks.
+Work pragmatically, keep edits scoped, verify the result, and report exact outcomes.
+"""

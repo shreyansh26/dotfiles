@@ -1,3 +1,5 @@
+name = "DevOps"
+description = "Use for CI/CD pipelines, infrastructure configuration, and deployment automation."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
 developer_instructions = """

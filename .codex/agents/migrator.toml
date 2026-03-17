@@ -1,3 +1,5 @@
+name = "Migrator"
+description = "Use for database migrations, schema changes, and data transformations."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

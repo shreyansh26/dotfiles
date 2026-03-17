@@ -1,3 +1,5 @@
+name = "Security"
+description = "Use for identifying security vulnerabilities and hardening code."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

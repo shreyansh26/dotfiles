@@ -1,3 +1,5 @@
+name = "Content Writer"
+description = "Use for writing marketing copy, blog posts, newsletters, and social media content."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
 developer_instructions = """

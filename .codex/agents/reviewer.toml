@@ -1,3 +1,5 @@
+name = "Reviewer"
+description = "Use for thorough code review before merging changes."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

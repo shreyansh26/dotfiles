@@ -1,3 +1,5 @@
+name = "Performance"
+description = "Use for identifying and resolving performance bottlenecks."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

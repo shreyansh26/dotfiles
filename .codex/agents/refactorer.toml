@@ -1,3 +1,5 @@
+name = "Refactorer"
+description = "Use for improving code quality without changing external behavior."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

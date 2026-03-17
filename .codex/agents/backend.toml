@@ -1,3 +1,5 @@
+name = "Backend"
+description = "Use for server-side development including APIs, database schemas, and business logic."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

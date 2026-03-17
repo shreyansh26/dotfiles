@@ -1,3 +1,5 @@
+name = "API Designer"
+description = "Use for designing API contracts, schemas, and interface specifications."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "high"
 developer_instructions = """

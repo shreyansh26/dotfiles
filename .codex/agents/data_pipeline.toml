@@ -1,3 +1,5 @@
+name = "Data Pipeline"
+description = "Use for building data pipelines, ETL processes, and analytics infrastructure."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
 developer_instructions = """

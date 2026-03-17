@@ -1,3 +1,5 @@
+name = "Documenter"
+description = "Use for writing and maintaining documentation."
 model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
 developer_instructions = """

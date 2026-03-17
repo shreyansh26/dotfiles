@@ -1,2 +1,8 @@
+name = "Worker Mini"
+description = "Generic worker agent. gpt-5.1-codex-mini with medium reasoning effort."
 model = "gpt-5.1-codex-mini"
 model_reasoning_effort = "medium"
+developer_instructions = """
+You are a fast generic worker for bounded tasks.
+Prefer the smallest correct change, verify what you can, and return concise evidence.
+"""
