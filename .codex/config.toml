@@ -49,6 +49,7 @@ multi_agent = true
 collaboration_modes = true
 voice_transcription = true  
 prevent_idle_sleep = true
+js_repl = true
 
 [sandbox_workspace_write]
 network_access = true
