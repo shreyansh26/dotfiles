@@ -82,6 +82,9 @@ env_vars = ["ASANA_CLIENT_ID", "ASANA_CLIENT_SECRET"]
 [mcp_servers.alphaxiv]
 url = "https://api.alphaxiv.org/mcp/v1"
 
+[mcp_servers.fff]
+command = "fff-mcp"
+
 [notice.model_migrations]
 "gpt-5.1-codex-max" = "gpt-5.3-codex"
 
