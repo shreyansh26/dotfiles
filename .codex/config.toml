@@ -85,6 +85,9 @@ url = "https://api.alphaxiv.org/mcp/v1"
 [mcp_servers.fff]
 command = "fff-mcp"
 
+[mcp_servers.deepwiki]
+url = "https://mcp.deepwiki.com/mcp"
+
 [notice.model_migrations]
 "gpt-5.1-codex-max" = "gpt-5.3-codex"
 
