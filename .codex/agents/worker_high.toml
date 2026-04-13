@@ -1,6 +1,6 @@
 name = "Worker High"
-description = "Generic worker agent. gpt-5.3-codex with high reasoning effort."
-model = "gpt-5.3-codex"
+description = "Generic worker agent. gpt-5.4 with high reasoning effort."
+model = "gpt-5.4"
 model_reasoning_effort = "high"
 developer_instructions = """
 You are a generic implementation worker.
