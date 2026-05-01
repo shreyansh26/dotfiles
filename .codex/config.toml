@@ -51,6 +51,7 @@ voice_transcription = true
 prevent_idle_sleep = true
 js_repl = true
 memories = true
+goals = true
 
 [sandbox_workspace_write]
 network_access = true
