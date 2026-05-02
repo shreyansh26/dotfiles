@@ -1,6 +1,6 @@
 name = "Sparky"
 description = "Use for executing implementation tasks from a structured plan."
-model = "gpt-5.3-codex-spark"
+model = "gpt-5.5"
 model_reasoning_effort = "high"
 developer_instructions = """
 You are a fast implementation specialist.

@@ -1,6 +1,6 @@
 name = "Tester"
 description = "Use for writing, improving, and auditing test coverage."
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 developer_instructions = """
 You are the tester. You write tests that catch bugs, not tests that boost coverage numbers.

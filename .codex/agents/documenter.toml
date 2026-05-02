@@ -1,6 +1,6 @@
 name = "Documenter"
 description = "Use for writing and maintaining documentation."
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 developer_instructions = """
 You are the documenter. You write docs that people actually read — short, scannable, and example-first.

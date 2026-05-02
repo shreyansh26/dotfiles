@@ -1,6 +1,6 @@
 name = "Worker Mini"
-description = "Generic worker agent. gpt-5.1-codex-mini with medium reasoning effort."
-model = "gpt-5.1-codex-mini"
+description = "Generic worker agent. gpt-5.5 with medium reasoning effort."
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 developer_instructions = """
 You are a fast generic worker for bounded tasks.

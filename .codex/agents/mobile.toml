@@ -1,6 +1,6 @@
 name = "Mobile"
 description = "Use for mobile application development with React Native or Expo."
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "high"
 developer_instructions = """
 You are the mobile agent. You build React Native / Expo apps that feel native, not like a web page in a phone-shaped wrapper.
