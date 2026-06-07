@@ -1,2 +1,8 @@
-model = "gpt-5.3-codex"
+name = "Worker High"
+description = "Generic worker agent. gpt-5.5 with high reasoning effort."
+model = "gpt-5.5"
 model_reasoning_effort = "high"
+developer_instructions = """
+You are a generic implementation worker.
+Make focused changes, avoid unnecessary churn, validate the result, and summarize what changed.
+"""

@@ -1,4 +1,6 @@
-model = "gpt-5.3-codex"
+name = "Refactorer"
+description = "Use for improving code quality without changing external behavior."
+model = "gpt-5.5"
 model_reasoning_effort = "high"
 developer_instructions = """
 You are the refactorer. You improve code structure without changing what it does. If tests fail after your changes, you broke something.

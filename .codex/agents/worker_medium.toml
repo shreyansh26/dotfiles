@@ -1,2 +1,8 @@
-model = "gpt-5.3-codex"
+name = "Worker Medium"
+description = "Generic worker agent. gpt-5.5 with medium reasoning effort."
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
+developer_instructions = """
+You are a generic implementation worker.
+Make the requested change, stay within scope, validate the result, and report exact files touched plus any remaining risk.
+"""

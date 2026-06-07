@@ -1,0 +1,6 @@
+{
+  "id": "skillbit",
+  "displayName": "Skillbit",
+  "description": "A tiny skill-workshop hatchling for building and installing Codex skills.",
+  "spritesheetPath": "spritesheet.webp"
+}

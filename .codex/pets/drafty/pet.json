@@ -1,0 +1,6 @@
+{
+  "id": "drafty",
+  "displayName": "Drafty",
+  "description": "A tiny speculative-decoding companion that drafts token paths and waits for verifier checks.",
+  "spritesheetPath": "spritesheet.webp"
+}
