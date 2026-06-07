@@ -1,0 +1,4 @@
+interface:
+  display_name: "Annotated Paper Visual HTML"
+  short_description: "Visual HTML notes from papers"
+  default_prompt: "Create a high-signal visual HTML note from this paper or paper section, using source snippets, diagrams, and a final cheat sheet."
