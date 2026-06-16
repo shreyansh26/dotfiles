@@ -1,0 +1,4 @@
+interface:
+  display_name: "Technical Blog Writer"
+  short_description: "Draft lucid technical blog posts in your style"
+  default_prompt: "Use $technical-blog-writer to draft a lucid technical blog post for Shreyansh's website."
