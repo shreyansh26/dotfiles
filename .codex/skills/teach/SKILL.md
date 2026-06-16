@@ -1,7 +1,7 @@
 ---
 name: teach
 description: >
-  Teach a complex topic as one complete, self-paced written lesson — chaptered
+  [EXPLICIT INVOCATION ONLY] Teach a complex topic as one complete, self-paced written lesson — chaptered
   sections the learner reads top to bottom, a deep-dive that slows down on the
   single hardest concept and breaks it into steps with worked examples, diagrams
   only where they actually clarify, and real citations for going deeper. Works
