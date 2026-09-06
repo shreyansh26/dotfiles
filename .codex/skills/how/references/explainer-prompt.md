@@ -20,7 +20,7 @@ The explorers each investigated a different angle of the same subsystem. Their f
 
 Write an explanation that a senior engineer unfamiliar with this area could read and walk away with a solid mental model. They should understand the architecture well enough to start working in it confidently.
 
-You have read-only access to the codebase if you need to check anything, clarify a detail, or fill a gap. Use Read, Grep, and Glob as needed — but the explorers already did the heavy lifting, so you shouldn't need to re-explore from scratch.
+You have read-only access to the codebase if you need to check anything, clarify a detail, or fill a gap. Use the available file-reading and search tools as needed — but the explorers already did the heavy lifting, so you shouldn't need to re-explore from scratch.
 
 ## Output Format
 

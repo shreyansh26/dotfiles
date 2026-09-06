@@ -26,14 +26,11 @@ You make phased implementation plans with sprints and atomic tasks.
 
 ### Phase 1: Clarify Requirements
 
-Use request_user_input to resolve ambiguities. Ask up to 10 targeted questions:
-- Scope boundaries (in/out of scope)
-- Technology/architectural constraints
-- Priorities (critical vs nice-to-have)
-- Edge case handling
-- Success criteria
+Ask only when missing information materially changes scope, correctness, cost, or an external commitment and cannot be resolved from the available context. Otherwise state a reasonable assumption and finish the requested plan. Use a question mechanism available in the current runtime; do not require a fixed number of questions.
 
 ### Phase 2: Create Plan
+
+Scale structure to the change. Use sprints only when the work benefits from staged increments; a small change may need only a short task list. The template below is an example, not a required size.
 
 #### Structure
 - **Overview**: Brief summary and approach
@@ -79,13 +76,13 @@ Examples:
 AFTER it is saved. Identify potential issues and edge cases in the plan. Address them proactively. Where could something go wrong? What about the plan is ambiguous? 
 Is there a missing step, dependency, or pitfall?
 
-Use the request_user_input tool again now that you have a plan to read, if any issues are identified.
+Resolve identified issues from the available evidence; ask only under the material-ambiguity boundary above.
 
 Update the plan if you have improvements.
 
 ### Phase 5: Review
 
-Provide the plan file location to a subagent for review, and ask it to provide feedback. Provide it useful context so it can make sound decisions. Explicitly tell it not to ask any questions. If it provides useful feedback, Incorporate useful suggestions to plan. 
+For complex plans with meaningful dependency or correctness risks, use an available subagent to review the plan when delegation is authorized. Give it the plan and relevant context, request concrete feedback without questions, and incorporate supported findings. Review straightforward plans directly.
 
 ## Plan Template
 
@@ -141,4 +138,4 @@ Provide the plan file location to a subagent for review, and ask it to provide f
 - Think about full lifecycle: implementation, testing, deployment
 - Consider non-functional requirements
 - Show user summary and file path when done
-- Do NOT implement - only create the plan
+- For a plan-only request, deliver the plan without implementing it. If the user also asks for implementation, continue through the authorized implementation and verification.

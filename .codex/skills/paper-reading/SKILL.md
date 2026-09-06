@@ -1,8 +1,6 @@
 ---
 name: paper-reading
-description: >
-  Use this skill when the user wants to deeply read, understand, summarize, analyze, critique, or extend a research paper, preprint, or academic article in English. Trigger it when the user provides an arXiv link, PDF, OpenReview page, ACL Anthology link, PapersWithCode page, paper title, abstract, or asks things like help me read this paper, summarize this paper, analyze this paper, explain this paper, help me understand this paper, find weaknesses in this paper, design counterexamples, or propose follow-up ideas. This skill applies across technical and scientific domains, including machine learning, NLP, computer vision, systems, biology, physics, economics, and related areas. The goal is not to restate the abstract, but to reconstruct the authors' reasoning, explain the method, evaluate the evidence, identify vulnerable assumptions, and propose research directions with clear, accurate English.
-  
+description: "Explain or critique a research paper’s method, mathematics, evidence, or limitations. Match the requested depth; skip metadata-only lookups."
 ---
 
 # Paper Reading Skill
@@ -32,11 +30,52 @@ If the novelty is unclear, search for 2 to 3 closely related papers to calibrate
 
 ------
 
+## Mathematical notation and exposition
+
+Treat mathematical clarity as a correctness requirement. Never reproduce an equation containing undefined notation.
+
+Before presenting the main equations, establish the mathematical setting in plain language: what objects exist, what is observed, what is learned or constructed, what is random, and what the method must produce.
+
+At the first use of every symbol:
+
+- State what it represents.
+- State whether it is a scalar, vector, matrix, tensor, set, function, distribution, or index.
+- Give its dimensions, units, domain and codomain, or index range whenever applicable.
+- State its operational role, such as input, target, parameter, latent variable, query, prediction, loss, or evaluation metric.
+- Say whether it is fixed, sampled, measured, optimized, or computed from other quantities.
+
+Explicitly distinguish symbols that are easy to conflate. For example, explain the difference between a generic input \(x\), a stored example \(x_i\), a key \(k_i\), a retrieval query \(q\), a target value \(v_{f(i)}\), and the mapping \(f\). If the paper overloads a symbol or changes notation between sections, disambiguate it and tell the reader.
+
+For every important equation:
+
+1. Introduce the question the equation answers.
+2. Define every new symbol and operator before or immediately after the equation.
+3. Check that the dimensions are compatible and state the equation's output type.
+4. Derive it in small steps, with one substantive transformation per line.
+5. Explain each transformation, including the identity, assumption, or approximation used.
+6. Translate the final expression into plain language and connect it to a running concrete example.
+
+When useful, provide a compact notation table before a derivation. Do not make readers reverse-engineer notation from surrounding prose.
+
+Separate exact statements from simplifications. If constants, normalization factors, lower-order terms, conditioning events, or dependencies are omitted, say so explicitly and explain why the simplified form preserves the relevant conclusion. Define asymptotic notation, expectations, probabilities, norms, inner products, and unfamiliar operators when they materially affect the argument.
+
+When explaining a theorem, state:
+
+- the assumptions;
+- the conclusion;
+- the proof idea;
+- what the bound or result means operationally;
+- the condition under which it becomes weak, vacuous, or false.
+
+Use the paper's notation when it is coherent. Introduce reader-friendly aliases only when they reduce ambiguity, and clearly map each alias back to the original symbol.
+
+------
+
 ## Output structure
 
-Your task is to produce a clear, readable, deep, and detailed paper analysis.
+Match the requested depth. For a summary, explain the central claim, method, evidence, and main limitation. For a question about one equation or mechanism, answer it with the necessary notation and source context; do not expand it into a full paper review.
 
-Output the following 12 sections in order. The order matters: background before method, method before experiments, understanding before critique. Do not skip any section except Section 6.
+For a requested deep analysis or critique, use the following 12-section structure. Keep the order: background before method, method before experiments, understanding before critique. Section 6 is optional when there is no meaningful mathematical derivation. A user-requested format takes precedence.
 
 Write mostly in flowing paragraphs. Use bullet points only when they genuinely improve structure, such as for experimental design, pipeline steps, or a minimum reproducible experiment. Avoid overusing dashes, quotation marks, parentheses, and low-information transitions. Every sentence should carry information.
 
@@ -86,7 +125,7 @@ What is the concrete method proposed by the paper? Explain it with a realistic e
 
 What is the paper's core mathematical derivation, if it has one? Explain it step by step from the theoretical side.
 
-If there is formal math, provide the necessary background for a reader with weaker math preparation. Explain the foundation of the theory and the intuition behind each formula. If there is no meaningful formal derivation, say so and skip this section.
+If there is formal math, provide the necessary background for a reader with weaker math preparation. Apply the mathematical notation and exposition requirements above: define every symbol, state dimensions and assumptions, derive each result in small justified steps, and explain the operational meaning of every important formula. If there is no meaningful formal derivation, say so and skip this section.
 
 ------
 

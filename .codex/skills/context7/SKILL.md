@@ -1,25 +1,15 @@
 ---
 name: context7
-description: |
-  Fetch up-to-date library documentation via Context7 API. Use PROACTIVELY when:
-  (1) Working with ANY external library (React, Next.js, Supabase, etc.)
-  (2) User asks about library APIs, patterns, or best practices
-  (3) Implementing features that rely on third-party packages
-  (4) Debugging library-specific issues
-  (5) Need current documentation beyond training data cutoff
-  (6) AND MOST IMPORTANTLY, when you are installing dependencies, libraries, or frameworks you should ALWAYS check the docs to see what the latest versions are. Do not rely on outdated knowledge.
-  Always prefer this over guessing library APIs or using outdated knowledge.
+description: "Fetch current library documentation when version-specific APIs or behavior are not established by local sources."
 ---
 
 # Context7 Documentation Fetcher
 
 Retrieve current library documentation via Context7 API.
 
-IMPORTANT: `CONTEXT7_API_KEY` IS STORED IN THE .env FILE IN THE SKILL FOLDER THAT THE CONTEXT7 SKILL IS INSTALLED IN. SEARCH FOR IT THERE. .env FILES ARE HIDDEN FILES. 
+Prefer the connected Context7 tools: resolve the library ID, then query the relevant version and topic. Reuse an ID already resolved for the same library/version. Use the CLI below only if the connector is unavailable or the user requests it.
 
-Example: 
-~/.agents/skills/context7/.env
-~/.claude/skills/context7/.env
+The CLI reads `CONTEXT7_API_KEY` from the environment or its `.env` loader. Let the process load credentials; do not print keys or read `.env` contents into the conversation. If credentials are unavailable, use official documentation or report the missing configuration. Run the CLI in a Python environment with `python-dotenv` installed.
 
 ## Workflow
 
@@ -62,7 +52,7 @@ Options:
 
 ## When to Use
 
-- Before implementing any library-dependent feature
+- When a library-dependent change requires version-specific information that local sources do not establish
 - When unsure about current API signatures
 - For library version-specific behavior
 - To verify best practices and patterns

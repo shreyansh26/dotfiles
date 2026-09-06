@@ -14,11 +14,11 @@ Create implementation plans with explicit task dependencies optimized for parall
 ## Core Principles
 
 1. **Explore Codebase**: Investigate architecture, patterns, existing implementations, dependencies, and frameworks in use.
-2. **Fresh Documentation First**: Use Context7 for ANY external library, framework, or API before planning tasks
-3. **Ask Questions**: Clarify ambiguities and seek clarification on scope, constraints, or priorities throughout the planning process. At any time.
+2. **Version accuracy**: Consult Context7 or official docs when local sources do not establish version-sensitive API behavior.
+3. **Clarify material ambiguity**: Ask when missing information changes the result; resolve routine choices from context.
 4. **Explicit Dependencies**: Every task declares what it depends on, enabling maximum parallelization
 5. **Atomic Tasks**: Each task is independently executable by a single agent
-6. **Review Before Yield**: A subagent reviews the plan for gaps before finalizing
+6. **Review Before Yield**: Review for dependency gaps; use an independent reviewer for complex plans when delegation is authorized.
 
 ## Process
 
@@ -28,27 +28,11 @@ Create implementation plans with explicit task dependencies optimized for parall
 - Architecture, patterns, existing implementations
 - Dependencies and frameworks in use
 
-### 1a. Optional: Stop to Clarification Questions
+### 2. Resolve uncertainty
 
-- If the architecture is unclear or missing STOP AND YIELD to the user, and request user input (AskUserQuestions) before moving on. Always offer recommendations for clarification questions.
-- If architecture is present, skip 1a and move onto next step. 
+Ask only when missing information materially changes scope, correctness, cost, or an external commitment and cannot be resolved from the available context. Otherwise state a reasonable assumption and finish the requested plan. Use a question mechanism available in the current runtime; do not require a fixed number of questions.
 
-### 2. Documentation
-
-**Documentation retrieval (REQUIRED for external dependencies):**
-
-Use Context7 skill or MCP to fetch current docs for any libraries/frameworks or APIs that are or will be used in project. If Context7 is not available, use web search.
-
-This ensures version-accurate APIs, correct parameters, and current best practices.
-
-### 3. STOP and Request User Input
-
-When anything is unclear or could reasonably be done multiple ways:
-- Stop and ask clarifying questions immediately
-- Do not make assumptions about scope, constraints, or priorities
-- Questions should reduce risk and eliminate ambiguity
-- Always offer recommendations for clarification questions.
-- Use request_user_input or AskUserQuestion tool if available. 
+Consult Context7 or official docs for unresolved version-specific dependencies. Use the versions selected by the project.
 
 ### 4. Create Dependency-Aware Plan
 
@@ -82,7 +66,7 @@ Save to `<topic>-plan.md` in the CWD.
 
 ### 5. Subagent Review
 
-After saving, spawn a subagent to review the plan:
+For complex dependency graphs, use an available subagent when delegation is authorized; otherwise review directly. If delegating, use the current runtime’s schema and supported roles, inheriting model settings unless the user requests an override. Review prompt:
 
 ```
 Review this implementation plan for:
@@ -174,6 +158,6 @@ T2 ──┴── T4 ──┘
 
 - Every task must have explicit `depends_on` field
 - Root tasks (no dependencies) can be executed in parallel immediately
-- Do NOT implement - only create the plan
-- Always use Context7 for external dependencies before finalizing tasks
-- Always ask questions where ambiguity exists
+- For a plan-only request, deliver the plan without implementing it. If the user also asks for implementation, continue through the authorized implementation and verification.
+- Verify unresolved version-sensitive dependencies before finalizing tasks.
+- Ask only under the material-ambiguity boundary above.

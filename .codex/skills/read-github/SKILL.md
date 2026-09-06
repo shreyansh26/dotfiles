@@ -1,13 +1,6 @@
 ---
 name: read-github
-description: |
-  Read and search GitHub repository documentation via gitmcp.io MCP service.
-
-  **WHEN TO USE:**
-  - User provides a GitHub URL
-  - User mentions a specific repo in owner/repo format
-  - User asks "what does this repo do?", "read the docs for X repo", or similar
-  - User wants to search code or docs within a repo
+description: "Read remote GitHub repository docs or code when no suitable local checkout or connected repository tool is available."
 ---
 
 # Read GitHub Docs
@@ -88,7 +81,7 @@ For any repository, these tools are available:
 
 ## Workflow
 
-1. When given a GitHub repo, first fetch documentation to understand the project
+1. Prefer a suitable local checkout or connected repository tool. Use this fallback for remote repository research; choose fetch-docs for a general overview or a targeted search for a narrow question.
 2. Use search-docs for specific questions about usage or features
 3. Use search-code to find implementations or specific functions
 4. Use fetch-url to retrieve external references mentioned in docs

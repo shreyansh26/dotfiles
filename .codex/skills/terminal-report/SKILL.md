@@ -1,15 +1,6 @@
 ---
 name: terminal-report
-description: >
-  Produce beautiful, structured terminal output for a CLI or analysis tool —
-  ANSI colors, aligned data tables, inline bar charts, diverging/centered bars,
-  tagged progress logs, sparklines, and section headers. Use this skill whenever
-  you are building a command-line tool, analysis script, report generator, data
-  dashboard, or status/progress display that prints to a terminal, OR whenever
-  the user wants output to look "polished", "colored", "styled", "like a
-  dashboard", or shows a screenshot of a pretty terminal and asks how to make
-  one. Applies even when the user just says "print the results nicely" or "make
-  a little CLI for this" without naming colors or charts explicitly.
+description: "Create polished user-facing terminal reports or dashboards when requested. Skip routine logs and scratch scripts."
 ---
 
 # Terminal Report

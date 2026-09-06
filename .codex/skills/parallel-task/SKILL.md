@@ -1,149 +1,46 @@
 ---
 name: parallel-task
-description: >
-  Only to be triggered by explicit /parallel-task commands. 
+description: "Execute a plan in dependency-aware parallel groups only when explicitly requested."
 ---
 
 # Parallel Task Executor
 
-You are an Orchestrator for subagents. Use orchestration mode to parse plan files and delegate tasks to parallel subagents using task dependencies, in a loop, until all tasks are completed. Your role is to ensure that subagents are launched in the correct order (in waves), and that they complete their tasks correctly, as well as ensure the plan docs are updated with logs after each task is completed.
+Execute the requested implementation plan through verified integration. Use the current runtime’s collaboration tools, supported roles, and advertised capacity; inherit model settings unless the user requests an override. If delegation is unavailable, carry out the ready tasks directly.
 
-## Process
+## Readiness and ownership
 
-### Step 1: Parse Request
+- Read the requested plan and extract task IDs, `depends_on`, file ownership, acceptance criteria, and validation.
+- For a requested subset, include its required prerequisites unless already complete. Do not add unrelated work.
+- Validate that dependency IDs exist and the selected graph has no cycle. Resolve obvious metadata errors from the plan; ask if fixing them requires a material scope decision.
+- A task is ready only after every dependency is completed and validated. Failed or blocked tasks do not release their dependents. Continue independent ready work while resolving a blocker.
+- Assign disjoint file ownership. Serialize tasks that edit the same files or shared generated outputs unless an explicit isolation strategy supports integration.
+- The parent owns shared plan/progress updates and integrated Git operations. Workers return changes and evidence instead of editing the shared plan, staging, committing, or pushing.
 
-Extract from user request:
-1. **Plan file**: The markdown plan to read
-2. **Task subset** (optional): Specific task IDs to run
+## Scheduling
 
-If no subset provided, run the full plan.
+Launch independent ready tasks in groups bounded by the available runtime slots. Validate the group’s results before advancing to tasks that depend on them. Small tasks may run sequentially when delegation costs more than it saves.
 
-### Step 2: Read & Parse Plan
+Do not fill slots with unnecessary work. Reuse idle workers where appropriate. Keep assignments concrete and use parameter names from the callable tool schema; do not assume foreign `Task` APIs, role names, or model availability.
 
-1. Find task subsections (e.g., `### T1:` or `### Task 1.1:`)
-2. For each task, extract:
-   - Task ID and name
-   - **depends_on** list (from `- **depends_on**: [...]`)
-   - Full content (description, location, acceptance criteria, validation)
-3. Build task list
-4. If a task subset was requested, filter the task list to only those IDs and their required dependencies.
+## Worker assignment
 
-### Step 3: Launch Subagents
+```text
+Implement task [ID]: [name].
+Plan context: [goal and relevant requirements]
+Prerequisites completed: [dependency IDs and outputs]
+Owned files/modules: [paths and responsibility]
+Acceptance criteria: [required behavior]
+Validation: [relevant check]
 
-For each **unblocked** task, launch subagent with:
-- **agent_type**: `high` (worker_high role)
-- **description**: "Implement task [ID]: [name]"
-- **prompt**: Use template below
-
-Launch all unblocked tasks in parallel. A task is unblocked if all IDs in its depends_on list are complete.
-
-### Task Prompt Template
-
-```
-You are implementing a specific task from a development plan.
-
-## Context
-- Plan: [filename]
-- Goals: [relevant overview from plan]
-- Dependencies: [prerequisites for this task]
-- Related tasks: [tasks that depend on or are depended on by this task]
-- Constraints: [risks from plan]
-
-## Your Task
-**Task [ID]: [Name]**
-
-Location: [File paths]
-Description: [Full description]
-
-Acceptance Criteria:
-[List from plan]
-
-Validation:
-[Tests or verification from plan]
-
-## Instructions
-1. Examine working plan and any relevant or dependent files
-2. Implement changes for all acceptance criteria
-3. Keep work **atomic and committable**
-4. For each file: read first, edit carefully, preserve formatting
-5. Run validation if feasible
-6. **ALWAYS mark completed tasks IN THE *-plan.md file AS SOON AS YOU COMPLETE IT!** and update with:
-    - Concise work log
-    - Files modified/created
-    - Errors or gotchas encountered
-7. Commit your work
-   - Note: There are other agents working in parallel to you, so only stage and commit the files you worked on. NEVER PUSH. ONLY COMMIT.
-8. Double Check that you updated the *-plan.md file and committed your work before yielding
-9. Return summary of:
-   - Files modified/created
-   - Changes made
-   - How criteria are satisfied
-   - Validation performed or deferred
-
-## Important
-- Be careful with paths
-- Stop and describe blockers if encountered
-- Focus on this specific task
+You are not alone in the codebase. Preserve others’ edits and adapt to their changes.
+Work within your assigned scope. A routine new file inside your owned module is allowed; coordinate with the parent before crossing another worker’s ownership or changing a shared contract.
+Do not update the shared plan, stage, commit, or push. Return exact changed paths, the behavior implemented, validation evidence, and any blockers.
 ```
 
-Ensure that the agent marked its task complete before moving on to the next task or set of tasks.
+## Validate and integrate
 
-### Step 4: Check and Validate.
-
-After subagents complete their work:
-1. Inspect their outputs for correctness and completeness.
-2. Validate the results against the expected outcomes.
-3. If the task is truly completed correctly, ENSURE THAT TASK WAS MARKED COMPLETE WITH LOGS.
-4. If a task was not successful, have the agent retry or escalate the issue.
-5. Ensure that that wave of work has been committed to github before moving on to the next wave of tasks.
-
-### Step 5: Repeat
-
-1. Review the plan again to see what new set of unblocked tasks are available.
-2. Continue launching unblocked tasks in parallel until plan is done.
-3. Repeat the process until *all** tasks are both complete, validated, and working without errors. 
-
-
-## Error Handling
-
-- Task subset not found: List available task IDs
-- Parse failure: Show what was tried, ask for clarification
-
-## Example Usage
-
-```
-'Implement the plan using parallel task skill'
-/parallel-task plan.md
-/parallel-task ./plans/auth-plan.md T1 T2 T4
-/parallel-task user-profile-plan.md --tasks T3 T7
-```
-
-## Execution Summary Template
-
-```markdown
-# Execution Summary
-
-## Tasks Assigned: [N]
-
-### Completed
-- Task [ID]: [Name] - [Brief summary]
-
-### Issues
-- Task [ID]: [Name]
-  - Issue: [What went wrong]
-  - Resolution: [How resolved or what's needed]
-
-### Blocked
-- Task [ID]: [Name]
-  - Blocker: [What's preventing completion]
-  - Next Steps: [What needs to happen]
-
-## Overall Status
-[Completion summary]
-
-## Files Modified
-[List of changed files]
-
-## Next Steps
-[Recommendations]
-```
+1. Inspect each worker result against the acceptance criteria. Address failures before marking the task complete.
+2. Update the shared plan with status, changed paths, and validation evidence. Release dependent tasks only after this check.
+3. Integrate all selected tasks and run the affected checks. Fix regressions caused by the work; broaden testing only for a concrete unresolved risk.
+4. The parent may make an integrated commit when the user’s request authorizes it. Skill invocation alone does not authorize a commit, push, or release.
+5. Finish only when the requested plan or subset is integrated and verified, or identify the specific unresolved blocker with evidence. Report completed work and actual validation without treating attempted checks as passes.

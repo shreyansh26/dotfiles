@@ -1,22 +1,11 @@
 ---
 name: teach
-description: >
-  [EXPLICIT INVOCATION ONLY] Teach a complex topic as one complete, self-paced written lesson — chaptered
-  sections the learner reads top to bottom, a deep-dive that slows down on the
-  single hardest concept and breaks it into steps with worked examples, diagrams
-  only where they actually clarify, and real citations for going deeper. Works
-  from an explicit topic ("teach me how Raft consensus works") or from one or
-  more links/papers/docs the user wants to be brought up to speed on — it fetches
-  them, falling back to a browser when a page is paywalled, JavaScript-rendered,
-  or only partially retrievable. Use this whenever the user wants to *understand*
-  something rather than just get an answer: "teach me X", "explain this <link>",
-  "help me understand <topic>", "I want to learn <thing>", "break this down for
-  me", "ELI5 but properly / but deep", or when they drop a URL and ask to be
-  walked through it like a class. Distinct from a quick factual lookup or a terse
-  summary — reach for this when the goal is durable understanding, not a TL;DR.
+description: "Write a self-contained lesson when the user asks to learn or be walked through a topic. Match the requested depth and output format; skip quick factual lookups."
 ---
 
 # Teach
+
+Opt-in may be `$teach` or a clear natural-language request such as “teach me” or “walk me through this.” A bare link or narrow factual question is not a request for a full lesson.
 
 Your job is not to *explain* a topic — it's to *build understanding* in one
 specific learner's head. Explaining dumps correct information in the right order.

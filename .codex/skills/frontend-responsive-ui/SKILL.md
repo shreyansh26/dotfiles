@@ -1,33 +1,21 @@
 ---
-name: Frontend Responsive Design Standards
-description: Build responsive, mobile-first layouts using fluid containers, flexible units, media queries, and touch-friendly design that works across all screen sizes. Use this skill when creating or modifying UI layouts, responsive grids, breakpoint styles, mobile navigation, or any interface that needs to adapt to different screen sizes. Apply when working with responsive CSS, media queries, viewport settings, flexbox/grid layouts, mobile-first styling, breakpoint definitions (mobile, tablet, desktop), touch target sizing, relative units (rem, em, %), image optimization for different screens, or testing layouts across multiple devices. Use for any task involving multi-device support, responsive design patterns, or adaptive layouts.
+name: frontend-responsive-ui
+description: "Design or repair responsive layouts across viewport sizes while preserving the project’s design system and accessibility. Skip art direction and non-layout UI changes."
 ---
 
 # Frontend Responsive Design Standards
 
-**Rule:** Mobile-first development with consistent breakpoints, fluid layouts, relative units, and touch-friendly targets.
+**Rule:** Preserve the project’s layout conventions while making the affected UI usable across its supported viewports. Use fluid layouts and accessible controls.
 
-## When to use this skill
+## When to use
 
-- When creating or modifying layouts that need to work on mobile, tablet, and desktop
-- When implementing mobile-first design patterns starting with mobile layout
-- When writing media queries or breakpoint-specific styles
-- When using flexible units (rem, em, %) instead of fixed pixels for scalability
-- When implementing fluid layouts with percentage-based widths or flexbox/grid
-- When ensuring touch targets meet minimum size requirements (44x44px) for mobile
-- When optimizing images and assets for different screen sizes and mobile networks
-- When testing UI across multiple device sizes and breakpoints
-- When maintaining readable typography across all screen sizes
-- When prioritizing content display on smaller screens through layout decisions
-- When using responsive design utilities in CSS frameworks (Tailwind, Bootstrap responsive classes)
+Use for responsive layout work, viewport-specific defects, or cross-device validation. For art direction, use `frontend-skill`; do not load this skill solely because a task edits UI text or non-layout behavior.
 
-This Skill provides Codex with specific guidance on how to adhere to coding standards as they relate to how it should handle frontend responsive.
+## Mobile-first for new layouts
 
-## Mobile-First Development - Mandatory
+Prefer mobile-first for a new layout. Preserve an existing desktop-first or container-query strategy when fixing that layout; do not rewrite it solely to match these examples.
 
-**Always start with mobile layout, then enhance for larger screens.**
-
-Bad (desktop-first):
+Fixed-width example that overflows small viewports:
 ```css
 .container {
   width: 1200px;
@@ -107,7 +95,7 @@ Usage (CSS):
 @media (min-width: 1024px) { }
 ```
 
-**Never use arbitrary breakpoints like 850px or 1150px unless explicitly required.**
+Reuse project breakpoints. Add a content-driven breakpoint only when the existing ones leave a demonstrated layout problem.
 
 ## Fluid Layouts
 
@@ -407,7 +395,7 @@ Test checklist:
 
 Before completing responsive work:
 
-- [ ] Started with mobile layout
+- [ ] Preserved the existing responsive strategy, or chose a suitable strategy for a new layout
 - [ ] Used project's standard breakpoints
 - [ ] Implemented fluid layouts (no fixed widths)
 - [ ] Used relative units (rem/em) for sizing

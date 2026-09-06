@@ -1,6 +1,6 @@
 ---
 name: frontend-skill
-description: Use when the task asks for a visually strong landing page, website, app, prototype, demo, or game UI. This skill enforces restrained composition, image-led hierarchy, cohesive content structure, and tasteful motion while avoiding generic cards, weak branding, and UI clutter.
+description: "Design new frontend interfaces or substantial visual redesigns. Use as the default art-direction skill; preserve existing design systems during incremental edits."
 ---
 
 # Frontend Skill
@@ -9,13 +9,19 @@ Use this skill when the quality of the work depends on art direction, hierarchy,
 
 Goal: ship interfaces that feel deliberate, premium, and current. Default toward award-level composition: one big idea, strong imagery, sparse copy, rigorous spacing, and a small number of memorable motions.
 
+## Scope and existing systems
+
+Use this as the default art-direction entrypoint. Do not also load `frontend-design` unless the user explicitly requests that alternative. Use `frontend-responsive-ui` only for responsive behavior or viewport-specific defects.
+
+Preserve the existing brand, typography (including system fonts), component conventions, and breakpoint strategy unless a redesign is requested. The visual defaults below guide new designs; the user’s brief and accessibility requirements take precedence.
+
 ## Working Model
 
-Before building, write three things:
+For a new design, decide these internally; for an incremental edit, reuse the existing direction:
 
 - visual thesis: one sentence describing mood, material, and energy
-- content plan: hero, support, detail, final CTA
-- interaction thesis: 2-3 motion ideas that change the feel of the page
+- content plan: landing-page sections or app workspace, according to the brief
+- interaction thesis: useful state transitions, with motion only when it improves the interaction
 
 Each section gets one job, one dominant visual idea, and one primary takeaway or action.
 
@@ -43,14 +49,14 @@ Hero rules:
 
 - One composition only.
 - Full-bleed image or dominant visual plane.
-- Canonical full-bleed rule: on branded landing pages, the hero itself must run edge-to-edge with no inherited page gutters, framed container, or shared max-width; constrain only the inner text/action column.
+- When the brief calls for full bleed, run the hero edge-to-edge and constrain its inner text/action column. Otherwise preserve the layout appropriate to the brand.
 - Brand first, headline second, body third, CTA fourth.
 - No hero cards, stat strips, logo clouds, pill soup, or floating dashboards by default.
 - Keep headlines to roughly 2-3 lines on desktop and readable in one glance on mobile.
 - Keep the text column narrow and anchored to a calm area of the image.
 - All text over imagery must maintain strong contrast and clear tap targets.
 
-If the first viewport still works after removing the image, the image is too weak. If the brand disappears after hiding the nav, the hierarchy is too weak.
+When imagery is central to the brief, ensure it contributes meaning and the brand remains clear. A text-led design is valid when it better serves the content.
 
 Viewport budget:
 
@@ -89,7 +95,7 @@ If a panel can become plain layout without losing meaning, remove the card treat
 
 Imagery must do narrative work.
 
-- Use at least one strong, real-looking image for brands, venues, editorial pages, and lifestyle products.
+- Use imagery for brands, venues, editorial pages, and lifestyle products when it adds meaning; there is no image quota.
 - Prefer in-situ photography over abstract gradients or fake 3D objects.
 - Choose or crop images with a stable tonal area for text.
 - Do not use images with embedded signage, logos, or typographic clutter fighting the UI.
@@ -127,11 +133,7 @@ When the work is a dashboard, app surface, admin tool, or operational workspace,
 
 Use motion to create presence and hierarchy, not noise.
 
-Ship at least 2-3 intentional motions for visually led work:
-
-- one entrance sequence in the hero
-- one scroll-linked, sticky, or depth effect
-- one hover, reveal, or layout transition that sharpens affordance
+Use only motions that improve hierarchy, feedback, or affordance. A static interface is valid. Respect `prefers-reduced-motion`, keep keyboard focus visible, and avoid making essential information depend on animation.
 
 Prefer Framer Motion when available for:
 
@@ -144,7 +146,7 @@ Prefer Framer Motion when available for:
 
 Motion rules:
 
-- noticeable in a quick recording
+- useful to the interaction rather than added for a recording
 - smooth on mobile
 - fast and restrained
 - consistent across the page

@@ -1,18 +1,18 @@
 ---
 name: openai-docs-skill
-description: Query the OpenAI developer documentation via the OpenAI Docs MCP server using CLI (curl/jq). Use whenever a task involves the OpenAI API (Responses, Chat Completions, Realtime, etc.), OpenAI SDKs, ChatGPT Apps SDK, Codex, MCP integrations, endpoint schemas, parameters, limits, or migrations and you need up-to-date official guidance.
+description: "Use the legacy OpenAI documentation CLI wrapper only when explicitly requested as a fallback."
 ---
 
 # OpenAI Docs MCP Skill
 
 ## Overview
 
-Use the OpenAI developer documentation MCP server from the shell to search and fetch authoritative docs. Always do this for OpenAI platform work instead of relying on memory or non-official sources.
+Use the OpenAI developer documentation MCP server from the shell to search and fetch authoritative docs. This is an optional CLI fallback; it is not the default OpenAI documentation entrypoint.
 
 ## Core rules
 
-- Always use this skill for OpenAI API/SDK/Apps/Codex questions or when precise, current docs are required.
-- Query the MCP server via the CLI wrapper in `scripts/openai-docs-mcp.sh` (do not rely on Codex MCP tools).
+- Use the current `openai-docs` skill for ordinary OpenAI questions. This legacy wrapper is available only when explicitly requested.
+- For this explicit CLI fallback, query the MCP server through `scripts/openai-docs-mcp.sh`. Do not displace an available official connector for ordinary documentation work.
 - Use `search` or `list` to find the best doc page, then `fetch` the page (or anchor) for exact text.
 - Surface the doc URL you used in your response so sources are clear.
 

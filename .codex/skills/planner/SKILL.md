@@ -1,11 +1,6 @@
 ---
 name: planner
-description: >
-  Create comprehensive, phased implementation plans with sprints and atomic tasks.
-  Use when user says: "make a plan", "create a plan", "plan this out", "plan the implementation",
-  "help me plan", "design a plan", "draft a plan", "write a plan", "outline the steps",
-  "break this down into tasks", "what's the plan for", or any similar planning request.
-  Also triggers on explicit "/planner" or "/plan" commands.
+description: "Create a software implementation plan when requested. Scale detail to the change; use phases only when dependencies justify them."
 ---
 
 # Planner Agent
@@ -29,28 +24,15 @@ Create detailed, phased implementation plans for bugs, features, or tasks.
 
 ### Phase 1: Clarify Requirements
 
-Before doing ANY documentation search: clarify requirements with user.
-This will narrow and aid you in finding the right docs.
-
-Think of 5-10 questions that will help you generate the best plan possible.
-
-Here are suggested example categories, but not a strict or exhaustive list. You may ask anything helpful. Use best judgement & prioritize ambiguity and risk reduction:
-1. Goals & success criteria
-2. Scope & non‑goals
-3. Users & core workflows
-4. Platforms & environments
-5. Tech constraints
-6. Data & integrations
-7. Auth & permissions
-8. Performance & reliability
-9. Testing & validation
-10. Ask any helpful question
+Ask only when missing information materially changes scope, correctness, cost, or an external commitment and cannot be resolved from the available context. Otherwise state a reasonable assumption and finish the requested plan. Use a question mechanism available in the current runtime; do not require a fixed number of questions.
 
 ### Phase 2: Retrieve Documentation
 
-When the plan involves any external library, API, framework, or service, use the Context7 skill to fetch the latest official docs before drafting tasks. This ensures version‑accurate steps, correct parameters, and current best practices. If no external dependencies apply, skip this phase.
+Use Context7 or official documentation when version-sensitive APIs or behavior are not established by local sources. Respect the project’s pinned versions; a dependency mention alone does not require another lookup.
 
 ### Phase 3: Create Plan
+
+Scale structure to the change. Use sprints only when the work benefits from staged increments; a small change may need only a short task list. The template below is an example, not a required size.
 
 #### Structure
 - **Overview**: Brief summary and approach
@@ -94,9 +76,7 @@ Examples:
 
 AFTER it is saved. Identify potential issues & edge cases in plan. Address proactively. Where could smth go wrong? What about the plan is ambiguous? Missing step, dependency, or pitfall?
 
-If any gotchas found, stop & ask up to 3 more questions. (either w/ request_user_input or directly)
-
-Refine the plan if any additional useful info is provided.
+Resolve issues directly when the available evidence supports a decision. Ask only under the material-ambiguity boundary above, then incorporate the answer.
 
 ## Plan Template
 
@@ -151,4 +131,4 @@ Refine the plan if any additional useful info is provided.
 - Think about full lifecycle: implementation, testing, deployment
 - Consider non-functional requirements
 - Show user summary and file path when done
-- Do NOT implement - only create the plan
+- For a plan-only request, deliver the plan without implementing it. If the user also asks for implementation, continue through the authorized implementation and verification.
