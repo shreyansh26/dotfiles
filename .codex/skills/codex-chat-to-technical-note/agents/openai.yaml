@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Chat to Technical Note"
+  short_description: "Turn Codex chats into durable technical notes"
+  default_prompt: "Use $codex-chat-to-technical-note to turn this Codex task into a detailed GitHub- and RemNote-compatible technical note."
